@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+</head>
+<body>
+<!--  
+* Genel olarak 140 tane ismi olan ve tarayıcılar tarafından desteklenen renk var.
+* Standard bir bilgisayar 16.000.000 farklı renk gösterebilecek kapasiteye sahiptir.
+* Tüm renklerin kırmızı , yeşil ve maviden geldiği bilinmektedir.
+* Renkleri göstermenin 1. Yolu "rgb" metodudur.Bu metodta kırmızı , mavi ve yeşil renkler 0 ile 255 arasında değer alır.
+* 0,0,0 değeri siyah , 255,255,255 değeri beyaz olarak değer alır.
+* Ek olarak transparency (opaklık olarak geçmekte olup "alpha" sayısı da denmektedir.) "rgba" etiketi kullanılabilir. 
+* Opaklık "0" ile "1" arasında değer alır.
+-->
+<h1 style="color: rgb(200,150,100)">Örnek Başlık</h1>
+<h2 style="color: rgba(180,200,250,0.8)">Örnek Başlık 2</h2>
+<h3 style="color: rgba(0,0,0)">Örnek Başlık 3</h3>
+<h4 style="color: rgba(255,255,255); background-color: black;">Örnek Başlık 4</h4>
+
+<!-- 
+* Renklerin 2. gösterim şekli ise "Hex" yöntemidir.
+* Hexadecimal yönteminde gene değerler 0 ile 255 arasında değer alır fakat gösterim 0-9 arası rakamlar ve A ile F arasında seçilen harfler kullanılır.
+* Bu yöntemde renk kodlarının başına "#" koyulur. Siyah renk #000000 ve beyaz renk #ffffff olarak değer alır.
+* 6 basamak ile gösterilen renk değerlerinin herhangi iki basamağı tekrar ediyorsa bu tek bir harf yada sayıyla gösterebilir.
+* Örnek olarak #ffffff rengi için kısaca #fff yazabiliriz.
+* Pratikte genel olarak Hexadecimal yöntemi kullanılır. Sadece opaklığa ihtiyaç olan durumlarda "rgb" yöntemine başvurulur.
+ -->
+
+ <p style="color: #f2a4b3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, itaque.</p>
+ <p style="color: #fff; background-color:black">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, itaque.</p>
+ <p style="color:#000">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam, itaque.</p>
+
+<!-- 
+* 3. gösterim şekli ise "HSL" olarak geçmektedir. Hue, Saturation, Lightness kısaltmaları ile oluşur. Az kullanılan bir yöntemdir.
+ -->
+<p style="color: hsl(50 80% 40%);">Lorem ipsum dolor sit amet.</p>
+
+<!-- 
+* Renk teorisi ile ilgili detaylı bilgi için Draw.io CSS-Part-2 Ders Notu 73 Nolu Slayta bak.
+ -->
+
+</body>
+</html>

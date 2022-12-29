@@ -1,0 +1,26 @@
+/* 
+* "display" propertysi elementlerin nasıl görüntüleneceklerini belirtir. 
+
+* "display:inline" uygulanan elementler içeriğin akışını bozmak yerine sadece içerik kadar yer kaplarlar. Olabilecek minimum yeri kaplarlar. 
+* "width" ve "height" propertylerini almazlar. Her zaman içerik kadar yer kaplarlar.
+* "margin" ve "padding" propertyleri diğer elemanları sadece yatay yönde iter. Dikey yönde ise elemanları kapatabilir.
+
+* "display:block" uygulanan elementler tüm satırı kaplarlar. Öncesinde ve sonrasında bulunan içerikler bir alt veya bir üst satırda yer bulurlar.
+
+* "display:inline-block" propertysi "inline" ve "block" elemanların kombinasyonu gibi çalışır. Aynı "inline" element gibi olabilecek en küçük alanı kaplamaya çalışırlar.
+* "width" ve "height" propertylerini de alırlar.
+* "margin" ve "padding" propertyleri diğer elemanları hem yatay hem düşeyde iter.
+
+* "display:none" propertysi kullanıldığında içerik tamamen kaybolur ve sanki içerik tamamen silinmiş gibi muamele görür. Geri kalan içerik boşluğu doldurur.
+
+! Default olarak belli bir display özelliğine sahip içerikler istenilen display özelliği verilerek değiştirilebilir.
+! "display:inline-block" yaygın kullanımlarından biri "nav-link"lerdir. Çünkü elementler dikey yerine yatay dizilirler.
+
+* "visibility" bir belgenin düzenini değiştirmeden bir öğeyi gösterir veya gizler.
+* "visibility: visible" element box görünür haldedir.
+* "visibility: hidden" etiketi ile uygulanan eleman sadece görünmez olur fakat yer kaplamaya devam eder. (Ekran okuyucular tarafından görülmez ve okunmaz)
+
+
+
+
+*/

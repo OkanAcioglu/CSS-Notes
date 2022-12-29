@@ -1,0 +1,447 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #222;
+  height: 600vh;
+}
+.container {
+  border: 5px solid black;
+}
+.cell {
+  padding: 2rem;
+  background: #dedede;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid red;
+  color: #fff;
+}
+.cell-1 {
+  background: #581f18;
+}
+.cell-2 {
+  background: #f0a202;
+}
+.cell-3 {
+  background: #d95d39;
+}
+.cell-4 {
+  background: #202c59;
+}
+.cell-5 {
+  background: #51cb20;
+}
+.cell-6 {
+  background-color: #dedede;
+}
+.cell-7 {
+  background-color: #d35d;
+}
+
+/* 
+------------------------------------ Some Concepts ------------------------------------------
+-------------- min-content-----------------
+? "min-content" -> Gerçek minimum genişliği temsil eder.
+? "text content" durumunda en uzun sözcük kadar küçülür.
+! "width: min-content;" , "height: min-content;"
+! "inline-size: min-content;" , "block-size: min-content;"
+! "grid-template-columns: 200px 1fr min-content;"
+*/
+.item {
+  width: min-content;
+  background-color: #8ca0ff;
+  padding: 5px;
+  margin: 1em;
+}
+
+/* 
+-------------- max-content-----------------
+? "max-content" -> Gerçek maximum genişliği veya yükseliği temsil eder.
+? "text content" durumunda içerik "overflow" olsa bile sarılmayacağı anlamına gelir.
+! "width: max-content;" , "height: max-content;"
+! "inline-size: max-content;" , "block-size: max-content;"
+! "grid-template-columns: 200px 1fr max-content;"
+*/
+.container-1 {
+  background-color: #8cffa0;
+  padding: 10px;
+  width: 200px;
+}
+
+.item-1 {
+  width: max-content;
+  background-color: #8ca0ff;
+  padding: 5px;
+  margin: 1em;
+}
+/* 
+-------------- fit-content-----------------
+? "fit-content" içerik uygun boşluğu olabildiğince kullanacaktır fakat asla "max-content" geçmeyecektir.
+! "width: fit-content;" , "block-size: fit-content;"
+*/
+.container-2 {
+  border: 5px solid #ccc;
+  padding: 10px;
+  width: 120px;
+}
+
+.item-2 {
+  width: fit-content;
+  background-color: #8ca0ff;
+  padding: 5px;
+  margin-bottom: 1em;
+}
+/* 
+-------------- fit-content()-----------------
+? "fit-content()" fonksiyonu "min(maximum size, max(minimum size, argument))" formülüne göre içeriği yerleştirir.
+! "fit-content(200px)" , "fit-content(5cm)" , "fit-content(30vw)" , "fit-content(40%)"
+*/
+.container-3 {
+  display: grid;
+  grid-template-columns: fit-content(300px) fit-content(200px) 1fr;
+  grid-gap: 5px;
+  box-sizing: border-box;
+  height: 200px;
+  width: 100%;
+  background-color: #8cffa0;
+  padding: 10px;
+}
+
+.item-3 {
+  background-color: #8ca0ff;
+  padding: 5px;
+}
+/* 
+-------------- minmax()-----------------
+? "minmax()" fonksiyonu boyut değerini "min" değerden büyük veya eşit olmasını , "max" değerden küçük veya eşit olmasını sağlar.
+? Örn: "minmax(200px,1fr)
+! Each parameter can be a "length", a "percentage", a "flex" (fr) value, keyword values "max-content", "min-content", or "auto".
+* "auto" özelliği "maximum" olarak "max-content" değerine eşittir. As a minimum it represents the largest minimum size (as specified by min-width/min-height) of the grid items occupying the grid track.
+*/
+.container-4 {
+  display: grid;
+  grid-template-columns: minmax(min-content, 300px) minmax(200px, 1fr) 150px;
+  grid-gap: 5px;
+  box-sizing: border-box;
+  height: 200px;
+  width: 100%;
+  background-color: #8cffa0;
+  padding: 10px;
+}
+
+.item-4 {
+  background-color: #8ca0ff;
+  padding: 5px;
+}
+
+/* 
+-------------- Grid Intro-----------------
+* Grid --> Columns ve rowslardan oluşan, her column ve row arasında "gutters" olarak adlandırılan boşlukların olduğu 2D layout. 
+* Grid için bir kapsayıcı "container" elemena ve alt "items"lara ihtiyaç var.
+* "display: grid" ile "grid" oluşumu çağırılır.
+
+-------------- grid-template-rows , grid-template-columns-----------------
+* "grid-template-rows" , "grid-template-columns" used as establish "row and column" tracks of grid.
+! "grid-template-columns: 100px 1fr;" , "grid-template-columns: minmax(100px, 1fr);"
+! "grid-template-columns: fit-content(40%);" , "grid-template-columns: repeat(3, 200px);"
+! "grid-template-columns: 200px repeat(auto-fill, 100px) 300px;"
+! "grid-template-columns: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;"
+? "grid-template-rows: 100px 1fr;" , "grid-template-rows: minmax(100px, 1fr);"
+? "grid-template-rows: fit-content(40%);" , "grid-template-rows: repeat(3, 200px);"
+? "grid-template-rows: 200px repeat(auto-fill, 100px) 300px;"
+? "grid-template-rows: minmax(100px, max-content) repeat(auto-fill, 200px) 20%;"
+* Her bir ifade bir kolonu veya satırı ifade edecek şekilde "grid" sistemi oluşturulur.
+! "auto" -> As a "maximum", represents the largest "max-content" size of the items in that track.
+! "auto" -> As a "minimum" represents the largest minimum size of items in that track (specified by the "min-width"/"min-height" of the items). This is often, though not always, the "min-content" size.
+! "auto" -> If used outside of "minmax()" notation, "auto" represents the range between the "minimum" and "maximum" described above. This behaves similarly to "minmax(min-content,max-content)" in most cases.
+! "auto" -> auto track sizes (and only auto track sizes) by default, take up any remaining space in the grid container. 
+
+!!! "px" yerine "em" ve "rem" birimleri de kullanılabilir.
+!!! "fr" kullanımı ile "responsive" bir tasarım elde edilir. Kullanımı tavsiye edilir.
+
+--------------row-gap--column-gap--gap-----------------
+* "column-gap" and "row-gap" propertyleri sırasıyla "column" ve "row" elementleri arasında "gap" oluşmasını sağlar.
+
+* "gap" propertysi "column-gap" and "row-gap" propertylerinin shorthand gösterimidir.
+! "gap" içerisine girilen "2" değerden ilki "row" ikincisi ise "column" içindir. Eğer "gap" içerisine tek değer atanırsa "row" ve "column" için bu "iki" değer aynı kabul edilir.
+
+? "gap: 10px 3rem;" , "gap: 5% 2em;" , "gap: calc(20px + 10%) calc(10% - 5px);"
+? "gap: 0.5cm 2mm;" , "gap: 3vmin 2vmax;" 
+
+---------grid-column-start------grid-column-end------grid-row-start------grid-row-end---------------
+* "grid" oluşturulduğunda bu oluşumla birlikte "grid lines" da oluşur. Bu çizgiler her bir "column" elemanının solunda ve sağında ve her bir "row" elemanının üstünde ve altında olacak şekilde oluşan çizgilerdir.
+* "grid lines" ekstra bir adlandırma yapılmadığı sürece "1" başlayarak hem "column"lar için hem de "row"lar için sıralanır. Sıralama "column" elemanlar için soldan sağa ve "row" elemanlar için yukarıdan aşağıdır. Aynı sıralama "-1"den başlayarak tersi yönde yapılır.
+* Örn: 3 "column" ve 3 "row" olan bir sistemde; en üstte soldan sağa 1 2 3 4 şeklinde "column" elemanları için ve 1 2 3 4 şeklinde "row" elemanlar için yukarıdan aşağı sıralanan "grid lines" elemanları oluşur. Negatif sıralama "column" elemanlar için aşağıda sağdan sola -1 -2 -3 -4 olacak şekilde ve row elemanlar için sağ tarafta aşağıdan yukarı -1 -2 -3 -4 olacak şekilde yapılır.
+* Söz konusu "grid lines" kullanılarak belli bir "item" belli bir alana atanabilir. Başlangıç yeri ve kapsayacağı "column" veya "row" sayısı değiştirilebilir.
+
+! "grid-column-start" kolon başlangıç "grid line" öğesi için kullanılır.
+! "grid-column-end" kolon bitiş "grid line" öğesi için kullanılır.
+! "grid-row-start" satır başlangıç "grid line" öğesi için kullanılır.
+! "grid-row-end" satır bitiş "grid line" öğesi için kullanılır. 
+? Her bir değer tamsayı olmalı ve grid sistemi içinde herhangi bir "grid line" numarasına karşılık gelmelidir.
+? Yukarıdaki 4 propertynin alabileceği diğer bir değer ise "span: 2" gibi bir değerdir. Bu değer söz konusu itemin kaç aralık boyunca devam edeceğini belirtmek için kullanılır.
+
+!!! Verilen değerlere göre "grid truck" elemanlar kesişebilir...
+!!! Verilen değerlere göre bazı "grid" alanları boş kalabilir...
+
+*/
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  border: 5px solid black;
+}
+
+.box {
+  padding: 2rem;
+  background: #dedede;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid red;
+  color: #fff;
+}
+
+.box1 {
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  background-color: red;
+}
+
+.box2 {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  background-color: yellow;
+}
+
+.box3 {
+  grid-column-start: span 2;
+}
+/* 
+---------------------------------------grid-row--grid-column----------------------------------------
+* "grid-column" ve "grid-row" propertyleri sırasıyla kolon ve satır elemanları için "start" ve "end" noktalarını belirtmek için kullanılır.
+! Her iki property için de değer tamsayı olmalı ve grid sistemi içinde herhangi bir "grid line" numarasına karşılık gelmelidir. Değerler "/" ile ayrılmalıdır. Ayraç öncesinde ve sonrasında boşluk bırakılmalıdır. Girilen ilk değer "start" ikinci değer ise "end" temsil eder.
+! Örn: "grid-column: 1 / 3;"
+? Kullanılabilinecek ikinci bir gösterim ise yine "/" ile ayrılan ve değerlerden biri "span 2" gibi bir değer ve diğeri tamsayı ve grid sistemi içinde herhangi bir "grid line" numarasına karşılık gelen sayı ile gösterilmesidir.
+? Örn: "grid-column: 1 /  span 2;" , "grid-row: span 2 / 4;"
+*/
+.wrapper-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+  border: 5px solid black;
+}
+
+.box11 {
+  padding: 2rem;
+  background: #dedede;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid red;
+  color: #fff;
+}
+
+.box10 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.box20 {
+  grid-column: span 2 / 4;
+}
+
+.box30 {
+  grid-column: span 2 / 4;
+  grid-row: span 2 / 4;
+}
+.box50 {
+  grid-column: 1 / -1;
+}
+
+/* 
+-------------------------------grid-template-areas-------------------------------------
+* "grid-template-areas" propertysi "grid area"lara spesifik bir isim vermemizi sağlar.
+* Verilen isimler herhangi bir isim olabileceği gibi "grid item" öğelerine atanmadığı sürece herhangi bir öğe ile bağlantılı değildirler.
+! "area" öğeleri oluşturulurken yatayda kolon sayısı kadar, dikeyde ise satır sayısı kadar atama yapılmalıdır.
+
+??? "grid-area" propertysi kullanılarak "grid item"ın konumu sırasıyla:
+??? "grid-row-start"  
+??? "grid-column-start" 
+??? "grid-row-end"  
+??? "grid-column-end" olacak şekilde:
+??? "grid-area: 1 / 3 / 2 / 4;" şeklinde de belirtilebilir.
+*/
+.wrapper-2 {
+  display: grid;
+  border: 5px solid black;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px 100px 100px;
+  grid-template-areas:
+    'a a .'
+    'a a b'
+    'c c b'
+    'd d d'
+    'e f f';
+}
+
+.box111 {
+  padding: 2rem;
+  background: #dedede;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  border: 3px solid red;
+  color: #fff;
+}
+
+.box100 {
+  grid-area: a;
+}
+
+.box200 {
+  grid-area: b;
+}
+
+.box300 {
+  grid-area: c;
+}
+
+.box400 {
+  grid-area: d;
+}
+
+.box500 {
+  grid-area: e;
+}
+/* 
+-------------------------------justify-items--align-items-------------------------------------
+* "justify-items" propertysi tüm "itemler" için uygun axis yönünde hizalama yapar.
+? "justify-items: center;" , "justify-items: start;" , "justify-items: end;" , "justify-items: stretch;"
+
+* "align-items" propertysi tüm "itemler" için uygun axis yönünde hizalama yapar.
+? "align-items: center;" , "align-items: start;" , "align-items: end;" , "align-items: stretch;"
+
+! Daha fazla "value" değerleri için "MDN" sayfasını ziyaret et.
+
+-------------------------------justify-content--align-content-------------------------------------
+* "justify-content" propertysi "grid container" içindeki "entire grid" için uygun axis yönünde hizalama yapar.
+? "justify-content: center;" , "justify-content: start;" , "justify-content: end;" , "justify-content: stretch;"
+? "justify-content: space-between;" , "justify-content: space-around;"
+? "justify-content: space-evenly;" , "justify-content: stretch;" 
+
+* "align-content" propertysi "grid container" içindeki "entire grid" için uygun axis yönünde hizalama yapar.
+? "align-content: center;" , "align-content: start;" , "align-content: end;" , "align-content: stretch;"
+? "align-content: space-between;" , "align-content: space-around;"
+? "align-content: space-evenly;" , "align-content: stretch;" 
+
+!!! "content" hizalamalarının uygulanması için kapsayıcı "container" elemanın "entire grid"ten daha büyük olması gereklidir.
+
+! Daha fazla "value" değerleri için "MDN" sayfasını ziyaret et.
+ */
+
+/* Justify-Content-Align-Content */
+.container-5 {
+  margin: 0 auto 0 auto;
+  border: 5px solid black;
+  display: grid;
+  height: 100vh;
+  width: 80%;
+  grid-template-columns: minmax(min-content, 200px) minmax(min-content, 200px) minmax(
+      min-content,
+      200px
+    );
+  grid-template-rows: 100px 200px 100px;
+  gap: 50px 20px;
+  justify-items: start;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+}
+
+/* 
+* "order" propertysi kullanılarak "item"lerin sırası değiştirilebilir.
+! "order" propertysi default olarak "0" gelir ve sadece "integer" değer alır. Değer negatif olabilir.
+*/
+
+/* 
+-------------------------------justify-self---align-self-------------------------------------
+* "align-self" propertysi varsa atanan "align-items" propertysini ezerek "item"in kendi başına konumlanmasını sağlar.
+! "align-self" propertysi "item"e atanan bir özelliktir.
+? "align-self: center;" , "align-self: start;" , "align-self: end;" , "align-self: baseline;"
+
+* "justify-self" propertysi varsa atanan "justify-items" propertysini ezerek "item"in kendi başına konumlanmasını sağlar.
+! "justify-self" propertysi "item"e atanan bir özelliktir.
+? "justify-self: center;" , "justify-self: start;" , "justify-self: end;" , "justify-self: baseline;"
+? "justify-self: stretch;"
+
+! Daha fazla "value" değerleri için "MDN" sayfasını ziyaret et.
+*/
+
+/* <!-- General Grid --> */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 200px 300px;
+  gap: 50px 20px;
+  justify-items: center;
+  align-items: end;
+  justify-content: right;
+}
+.cell-1 {
+  order: 2;
+  justify-self: start;
+  align-self: end;
+}
+
+.cell-6 {
+  order: -1;
+  justify-self: end;
+  align-self: start;
+}
+
+.cell-3 {
+  order: 4;
+}
+
+.cell-5 {
+  order: 3;
+}
+/* 
+----------------------------------------Repeat------------------------------------------------------
+* "repeat()" fonksiyonu yinelenen bir "column" ve "row" öğelerinin daha kompakt bir şekilde gösterilmesini sağlar.
+* "repeat()" fonksiyonu "grid-template-columns" ve "grid-template-rows" propertyleri ile kullanılır.
+* "repeat()" fonksiyonu 2 tane argüman alır:
+! 1. argüman "repeat count" değeridir. Değerin kaç kere tekrar edileceğini belirtir. "Tamsayı" , "autofill" veya "autofit" değerlerini alabilir.
+! 2. argüman tekrar edilecek değerleri belirtir.
+?? "repeat(4, 250px)" , "repeat(4, 60%)" , "repeat(4, minmax(100px,1fr))"  
+?? "repeat(4, fit-content(200px))" , "repeat(4, 10px 30% 400px)" 
+?? "repeat(4, 1fr)" , "repeat(4, min-content)" , "repeat(4, max-content)"
+?? "repeat(4, auto)" , "repeat(4, min-content max-content)"
+
+----------------------------------Autofill--Autofit + minmax----------------------------------------
+* Özellikle duyarlı bir "grid yapısı" oluşturulmak istendiğinde "auto-fill" ve "auto-fit" özelliklerini kullanmak işleri kolaylaştırabilir.
+! 1. Kullanım: "grid-template-columns: repeat(auto-fill , minmax(200px , 1fr));"
+? Yukarıdaki kullanımda alacağımız davranış eğer "width" değeri alt elementlerin en düşük değerinde (burada 200px) olacak şekilde sırala. Eğer en düşük değer alarak başka bir element daha taşıyıcıya sığabiliyorsa, bir alt element varmışçasına yapı kur şeklindedir.
+! 2. Kullanım: "grid-template-columns: repeat(auto-fit , minmax(200px , 1fr));"
+? Yukarıdaki kullanımda alacağımız davranış örnek olarak 4 adet alt elementimiz var ise ekran genişliği verilen alt sınır değerine göre (burada 200px) tam olarak doluyor ve daha fazla yer de kalıyorsa (burada 800px ve üstü) elemanlar genişleyerek eşit bi şekilde büyüyor (1fr etkisi ile) fakat ekran genişliği 4 elementi de 1 satıra sığdıramayacak hale geldiğinde (burada 800px sınırı) son elementten başlayarak alt sınır değerini korumak için (burada 200px) elementleri alt satıra atar.
+*/
+.container-6 {
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.container-7 {
+  border: 5px solid black;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}

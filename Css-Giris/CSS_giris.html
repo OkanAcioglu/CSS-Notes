@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="style.css">
+      <title>CSS</title>
+      <!-- 
+ * CSS temel yapısı [ selector { property:  value; } ] olarak geçer. Burada selector KİMİN değişeceğini , property NEYİ değiştirmek istediğimizi ve value ise NASIL değiştirilmek istendiğini belirtir.
+ * Css kodları nerelerde yazıldığına göre farklı gruplara ayrılır.
+ * Bunlar: İnline CSS , (İnline CSS alternatif olarak) İnternal CSS , dosya içerisinde kullanmak istediğimiz zaman external CSS.
+ * "inline CSS" sadece içine uygulandıkları elemanları kapsamaktadır. Başka bir section veya blok arasına CSS vermek için bu kodları tekrar yazmamız gerekmektedir. Burada boşuna CSS kodları tekrar tekrar yazılır. Ayrıca HTML kodları boşuna kalabalık hale geliyor.CSS kodlarının olmadığı durumda HTML kendi başına sade ve boyutu yüksek değildir. Bu yüzden inline CSS mümkün olduğu kadar az kullanılması tavsiye edilir.
+ * İnternal CSS "head" kısmı içerisinde oluşturulan "style" etiketi içerisine yazılan CSS kodu ile oluşturulur. Bunun için öncelikle bir selector oluşturulur. Selector sayfa üzerinde tüm aynı etiketleri çağırır.
+* Selector türleri değişkenlik gösterir, örneğin etiket ismine göre, class yada id'ye göre bulma.
+* External CSS birden fazla HTML sayfasında aynı tip CSS kullanılacak ise dışarıdan bir CSS dosyası ortak olarak eklenecek kısımlar belirlenerek her sayfaya direk uygulanır. Bunun için bir tane "style.css" dosyası oluşturulur. Oluşturulan CSS dosyası "head" içerisine açılan "link" etiketi aracılığı ile CSS dosyası eklenmek istenen tüm içeriklere eklenir.
+* "CSS" dosyaları kaynaktan ek dosya olarak talep edilir. Performans açısından tarayıcılar çağırdıkları ek kaynakları tarayıcının belleğinde belli bir süre tutar. Dolayısıyla external css dosyalarında yapılan bir değişiklik güncelleme yapıp sayfayı yenilediğimizde direk görünmeyebilir. Bu durumda yapılması gereken geliştirici araçlar açıkken yenile tuşuna basılı tutarak önbelleği boşalt ve tam yeniden yükle dememiz lazım. 
+      -->
+      <style>
+            h2 {
+                  background-color: bisque;
+                  color: #fff;
+                  text-align: center;
+            }
+      </style>
+</head>
+
+<body>
+      <h1 style="background-color: #2e4c6d; color: #fff">Let's Learn Css</h1>
+      <h2>Let's Learn Css</h2>
+      <h3>Let's Learn Css</h3>
+
+</body>
+
+</html>

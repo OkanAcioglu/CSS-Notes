@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 62.5%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  font-size: 2rem;
+  background: red;
+  color: black;
+  margin: 5rem;
+}
+
+.box:first-child {
+  margin-top: 8rem;
+}
+
+/* !!!!!! IMPORTANT !!!!!! 
+!!! Before start the "transform" property it is important to note that "translate" , "rotate" and  "scale" are now have their own properties and don't have to be used as "transform" property function... */
+/* 
+* For use "transform" -> just write "transform:" and select bunch of different options.
+*/
+/* 
+! "transform: rotate()" property "rotate" the element with respect to the "center".
+! "3.1rad" , ".25turn" = "90deg" ---> for "positive" numbers -> "clockwise" and for "negative" numbers -> "counter-clockwise"
+! There is also posibility to change the "rotation-axis" with using "transform-origin"
+*/
+.box-1 {
+  transform: rotate(145deg);
+}
+/* 
+! "transform: translate()" allows us to move object up down right and left.
+! With one value it is exatly the same with "translateX". If there is "two value", "first" one will be for "X direction" and "second one" will for "Y direction".
+! "tranform: translate(50%)" , "transform: translate(100px)" , "transform: translate(3rem)" 
+! "Negative values" moves object to the "left" and "positive values" moves object to the "right"
+! "Negative values" moves object to the "up" and "positive values" moves object to the "down"
+! When we start to use "translate" with "percentages". For example when we said "transform: translate(100%)" , object will move right side with his 100% own width.
+*/
+
+.box-5 {
+  position: relative;
+}
+
+.box-5::after {
+  content: 'After';
+  background: purple;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+}
+
+/* 
+!!! Be careful the order of the transform, If you want apply multiple transformations to an element, be careful about the order in which you specify your transformations. For example, if you rotate before translating, the translation will be along the new axis of rotation!
+*/
+.box-2 {
+  background: pink;
+  transform: rotate(45deg) translate(100px);
+}
+.box-3 {
+  background: pink;
+  transform: translate(100px) rotate(45deg);
+}
+
+/* 
+! "transform: scale() used for transformation that "resizes" an element on the "2D plane".
+! If we put a "single number" in it, it means "resize" in "both" X" and "Y" axis.
+! If we put "two number" and divide them with "commas" "first one" is for "X" axis and "second one" is for "Y" axis. 
+! "transform: scale(1.5) means 1.5 times bigger in both X and Y axis.
+*/
+.box-4 {
+  background: magenta;
+  transform: scale(1.5);
+}
+/* 
+! "transform: skew()" ued for streching out of shape.
+! If we put a "single number" in it, it means "resize" in "both" X" and "Y" axis.
+! If we put "two number" and divide them with "commas" "first one" is for "X" axis and "second one" is for "Y" axis. 
+*/
+.box-6 {
+  transform: skew(40deg);
+}
+/* 
+!!! Difficulty comes when we try to override it since "transform" is a "one" property.
+!!! When we want to override a any property inside the "transform" we need to redefine all of the properties.
+!!! Using "variables" ease our job.
+*/
+/* box-7 , big and small classes defined at the same element.  */
+.box-7 {
+  transform: rotate(30deg) scale(1.2) translateX(200px);
+}
+.big {
+  transform: rotate(60deg); /* Box will only rotate*/
+}
+.small {
+  transform: rotate(60deg) scale(1.2) translateX(200px); /* Redefined all others */ /* Applies only final properties */
+}
+
+/* 
+?? All the information above are for "2D transform". For "more information" and "3D transforms" please see the "MDN Transform Page"
+*/

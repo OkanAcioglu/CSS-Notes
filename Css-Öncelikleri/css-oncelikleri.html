@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <!-- 
+  * Cascade sisteme göre yazılan kodlar yukarıdan başlayarak aşağı doğru inerek göz önüne alınır.
+  * Sıralama "head" kısmına eklenen farklı external CSS stilleri için de geçerlidir. 
+  * Alt alta yazılan ve ikisi de aynı özelliği içeren (örnek) "h1" etiketlerinden en son yazılan işleme alınır.
+  * Özgünlük (Specificity) : Verilen seçicinin ne kadar spesifik olduğunun ölçüsüdür. Aynı öğe için birden fazla kural olduğunda hangisinin seçileceğine karar verme ölçüsüdür.
+  * Burada basit olarak 3 basamaklı bir sistem vardır. Her basamağa 1 sayı ekleyen belli kriterler vardır. Bu kriterler sonucudan ortaya çıkan sayıya göre karar verilir.
+  * 1. basamakta (yüzler denebilir.) en spesifik öğe olan "ID selector" bulunur.
+  * 2. basamakta (onlar denebilir.) "Class Selector" , "Attribute" , "Pseudo Class" bulunur.
+  * 3. basamakta (birler denebilir.) "Element" , "Pseudo Element" bulunur.
+  * Bir öğe için ortaya çıkan sayı hangisinde daha büyük ise o kazanır.
+  ! Bu sistemi tam bir sayı sistemi olarak düşünmemek gerekir. Örneğin 3. basamakta(birler) bir şekilde "30" sayısı varsa bunu 2. basamak(onlar) basamağına aktaramayız.
+  * https://specificity.keegan.st/ sitesinden faydalanarak hangi CSS dizisinin daha specific olduğunu karşılaştırabiliriz.
+  ! "!important" cascade sistem içindeki bildirimleri seçerek kuralları değiştirir.
+  ! Bildirimdeki değerden sonra önemli bayrağını (!important) eklenerek oluşturulur. Cascade sistemi önceliklerini bozar. Kullanıması "inline CSS"'de olduğu gibi tavsiye edilmez.
+
+  ! Genel Toplamda Öncelik Sıralaması:
+  ? Declarations Marked (!important) -> Inline Style -> ID Selector -> Class or Pseudo Class Selector -> Element Selector or Pseudo Element -> Universal Selector (*)
+     -->
+  <style>
+    h1 {
+      color: red;
+    }
+
+    h1 {
+      font: 16px;
+    }
+
+    #page-title {
+      color: chocolate;
+    }
+
+    .text-yellow {
+      color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <h1 id="page-title" class="text-yellow" style="color: magenta">
+      Welcome To MovieApp
+    </h1>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis,
+      a.
+    </p>
+  </section>
+  <section>
+    <h2 id="page-subtitle" class="text-white">How It Works?</h2>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+/* 
+---------------------------------Responsive Web Design (RWD)----------------------------------------
+* "Viewport" is the user's visible area of a web page and varies with the device.
+* In the early days of web design, pages were built to target a particular "screen size". If the user had a "larger or smaller screen" than the designer expected, results ranged from "unwanted scrollbars" to "overly long line lengths", and "poor use of space". 
+* As more diverse screen sizes became available, the concept of "Responsive Web Design (RWD)" appeared, a set of practices that allows web pages to "alter their layout and appearance" to "suit different screen widths", "resolutions"...
+* It is an idea that changed the way we design for a multi-device web.
+
+! Mobile cihazlar güç kazanmadan önce bir sitenin hem mobil hem desktop versiyonları için ayrı ayrı siteler yapılıyordu(m.example.com, or example.mobi). Mobil cihazlar güçlendikçe ve gerçek bir siteyi açabilecek boyuta geldiğinde söz konusu sitenin mobil versiyonları kullanıcı deneyimini çok düşümeye başladı.
+
+* Web sayfaları "desktop" , "tablet" , "mobile" cihaz olmak üzere birçok cihaz üzerinden görüntülenebilir.
+* "RWD" tüm cihazlarda sayfanın "düzgün görüntülenmesini", "herhangi bir içerik kaybı olmamasını" ve "kolay kullanılmasını"; "resize", "hide" , "shrink" , "enlarge" or "move the content" gibi özellikler kullanarak sağlar.
+
+! Setting The Viewport:
+? <meta name="viewport" content="width=device-width, initial-scale=1.0"> "meta" elemanı her web sayfası "header" kısmında bulunması gerekli olup, bu eleman "browser"a sayfanın "dimension" ve "scalling" özelliklerini nasıl kontrol edeceği ile ilgili talimatlar verir.
+? "width=device-width"  sets the width of the page to follow the "screen-width of the device" (which will vary depending on the device).
+? "initial-scale=1.0" sets the initial zoom level when the page is first loaded by the browser.
+
+! Size Content to the Viewport:
+? Users scroll websites "vertically" on both "desktop" and "mobile devices" "but not horizontally!"
+? If the user is "forced to scroll horizontally" or "zoom out" to see the "whole web page" it results in a "poor user experience".
+? Do NOT use "large fixed width elements".
+? Do NOT let the content rely on a particular viewport width to render well.
+? Use "Media Queries" to apply different styling for "small" and "large" screens.
+
+! Responsive Images
+? If the "width" property set to "%" (Ex:100%) and "height" property set to "auto" image will be responsive and scale up and down.
+*  img {
+*  width: 100%;
+*  height: auto;
+*  }
+? Yukarıdaki örnekte "image" öğesi "orijinal" boyutundan daha fazla büyütülebilir. Bu sorun için çözüm olarak "max-width" propertysi kullanılabilir.
+*  img {
+*  max-width: 100%;
+*  height: auto;
+*  }
+! Responsive Background Images
+? 1. If "background-size" property is set to "contain", the background image will "scale" and try to "fit the content area". However "image" will "keep" its "aspect ratio" (the proportional relationship between the image's width and height):
+*  div {
+*  width: 100%;
+*  height: 400px;
+*  background-image: url('img_flowers.jpg');
+*  background-repeat: no-repeat;
+*  background-size: contain;
+*  border: 1px solid red;
+*  }
+? 2. If "background-size" property is set to "100% 100%", the "background image" will "stretch" to cover the "entire content area"
+*  div {
+*  width: 100%;
+*  height: 400px;
+*  background-image: url('img_flowers.jpg');
+*  background-size: 100% 100%;
+*  border: 1px solid red;
+*  }
+? 3. If "background-size" property is set to "cover", "background image" will scale to cover the "entire content area". Notice that the "cover" value keeps the "aspect ratio", and some part of the background image may be clipped(kırpılır).
+*  div {
+*  width: 100%;
+*  height: 400px;
+*  background-image: url('img_flowers.jpg');
+*  background-size: cover;
+*  border: 1px solid red;
+*  }
+
+? Use the "media query" "min-device-width", instead of "min-width", which checks the "device width", instead of the "browser width". Then the "image" will not change when you resize the browser window:
+*  body {
+*  background-image: url('img_smallflower.jpg');
+*  }
+*  @media only screen and (min-device-width: 400px) {
+*  body {
+*  background-image: url('img_flowers.jpg');
+*   }
+*  }
+
+? HTML "picture" Element:
+? The HTML "picture" element gives "more flexibility" in specifying "image resources".
+? Most common use of the "picture" element will be for images used in "responsive designs". Instead of having one "image" that is "scaled up or down" based on the "viewport width", multiple images can be designed to more nicely fill the browser viewport.
+? The "srcset" attribute is required, and defines the "source of the image".
+? "media" attribute is optional, and accepts the "media queries" you find in CSS @media rule.
+? Should also define an <img> element for browsers that do not support the <picture> element.
+* <picture>
+*  <source srcset="img_smallflower.jpg" media="(max-width: 400px)">
+*  <source srcset="img_flowers.jpg">
+*  <img src="img_flowers.jpg" alt="Flowers">
+* </picture>
+*/
+
+/* 
+-------------------------------------Media-Queries---------------------------------------------
+* "@media" rule to include a "block of CSS properties" only if a "certain condition" is "true".
+* Adding a "breakpoint" where certain parts of the design will behave differently on each side of the "breakpoint".
+
+! Syntax:
+* @media [media-type] operator ([media-feature]) {
+*  { Styles }
+*  }
+?  @media all and (max-width: 500px) {
+?    body {
+?        color: red; 
+?     } 
+?    }
+
+! Media Types:
+? all -> Default value, Used for all types of devices. (if don't write anything for "device" it is taken as "all"
+? print -> Used for printers.
+? screen -> Used for computer,tablet,phones that has screen.
+? speech -> Used for screen-readers.
+
+! Operators
+? "and" -> all "media features" must be "true".
+? "," -> "one of" the "media features" in a list is "true", "the entire statement" return as "true"
+
+!!! Always Design Mobile First!!!
+! This will make the page "display faster" on "smaller devices".
+! For this purpouse instead of "changing styles" when the "width" gets "smaller than 768px" use "width" gets "larger than 768px". 
+? By adding one more media query (at 576px), and a set of new classes for devices larger than 576px (but smaller than 768px):
+* @media screen and (min-width: 576px) {
+*  body {
+*   background-color: red;
+*   }
+*   }
+* @media screen and (min-width: 768px) {
+*  body {
+*   background-color: green;
+*   }
+*  }
+
+! Typical Device Breakpoints 
+? Extra small devices (phones, 576px and down) 
+* @media only screen and (max-width: 576px) {...}
+
+? Small devices (portrait tablets and large phones, 576px and up) 
+* @media only screen and (min-width: 576px) {...}
+
+? Medium devices (landscape tablets, 768px and up) 
+* @media only screen and (min-width: 768px) {...}
+
+? Large devices (laptops/desktops, 992px and up) 
+* @media only screen and (min-width: 992px) {...}
+
+? Extra large devices (large laptops and desktops, 1200px and up) 
+* @media only screen and (min-width: 1200px) {...}
+
+! Orientation: Portrait / Landscape
+* portrait: "height" is greater than or equal to the "width".
+* landscape: "width" is greater than the "height".
+
+? "media queries" can also be used to change "layout of a page" depending on the "orientation" of the browser.
+* @media all and (orientation: landscape) and (max-width: 500px) {
+*  body {
+*    background-color: lightblue;
+*   }
+*  }
+
+! Hide Elements With Media Queries
+? Hide elements on different screen sizes
+* @media only screen and (max-width: 600px) {
+*  div.example {
+*    display: none;
+*  }
+* }
+
+! Variable Font Size
+* @media only screen and (min-width: 601px) {
+*   div.example {
+*     font-size: 80px;
+*   }
+* }
+* @media only screen and (max-width: 600px) {
+*   div.example {
+*     font-size: 30px;
+*   }
+* }
+
+*/
+body {
+  background: yellow;
+}
+.banner {
+  background-color: blue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  text-decoration: underline;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 576px) {
+  body {
+    background-color: red;
+  }
+  .banner {
+    background: yellow;
+  }
+  h1 {
+    color: black;
+    font-size: 60px;
+  }
+}
+@media screen and (min-width: 768px) {
+  body {
+    background-color: green;
+  }
+  .banner {
+    margin-top: 60px;
+    background: pink;
+  }
+}

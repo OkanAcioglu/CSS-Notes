@@ -1,0 +1,52 @@
+/*
+* CSS'de "Kalıtım" bir elemente herhangi bir property verilmediğinde ne olacağını kontrol eder.
+
+* "İnspect" içerisinde hangi özelliğin inheretince ile geldiği incelenebilir.
+
+? "specified value" belgenin "still sayfası"ndan aldığı değerdir. Belgenin "still sayfası"nda değer açıkça belirtiliyorsa bu değer kullanılacaktır. Eğer "still sayfası"nda bir değer belirtilmiyorsa ancak inherited bir property ise değer parenttan alınacaktır. Bu iki durum da yoksa "initial value" kullanılacaktır.
+? "computed value" inheritance sırasında "parent"tan "child"a aktarılan değerdir.
+
+* CSS'de propertyler iki grupta toplanır:
+! "inherited properties" varsayılan olarak parent elementin "computed values"i olarak ayarlanır.
+! "non-inherited properties" varsayılan olarak "initial value" olarak ayarlanır.
+
+? Base(initial) style CSS specifitationda tanımlanan özelliktir.
+? Browser specific styles ise farklı sitelerin "user agent stylesheet" altında gelen özellikleridir.
+? Custom style ise kullanıcının kendi tarafından verilen CSS özellikleridir.
+! Buradaki hiyerarşik sıralama eğer "Custom Style" var ise öncelikli olarak göz önüne alınıyor. Sonrasında eğer var ise "Browser Specific" özellikler göz önüne alınıyor. Son olarak ise hiçbiri yok ise "Base(Initial)" özellikler göz önüne alınıyor.
+
+* "initial" kullanıldığında, kullanılan CSS özelliğinin "formal definition" olarak ayarlanması sağlanır.
+! Inherit propertylerde "initial value" beklenmedik olabilir.
+
+* "inherit" valueyi parenttan al anlamına gelir. Property özelliğinin doğası "inherited" olsa da olmasa da alır.
+
+* "unset" bir propertyi eğer doğal olarak inherite bir property ise "inherite" etmesini , eğer değilse "initial value" dönmesini sağlar. 
+* Başka bir deyişle property "inherited" ise "inherit" gibi , eğer property "non-inherited" ise "initial" olarak davranır.
+* Tek başına kullanıldığında çok bir anlam ifade etmese de "all" ile beraber kulladığında gayet kullanışlıdır.
+
+* "revert" kullanıldığında property "Browser Specific" özelliğine döner.
+* Eğer "user agent default" propertylerde kullanılırsa "unset" gibi çalışır.
+* Aslında birçok durumda "unset" gibi çalışır. Sadece "Browser Specific" durumlarda farklılık yaratır.
+
+*/
+
+body { 
+    color: purple
+    
+}
+
+.baslik { 
+    color: initial
+}
+
+.birinci-buton {
+    color: inherit;
+    font-family: inherit;
+}
+
+.ikinci-buton { 
+    all: unset;
+}
+.ucuncu-buton { 
+    all: revert;
+}

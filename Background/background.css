@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 
+--------------------"background-image"------------------------------
+* "background-image" sets one or more "background images" on an element.
+* The "background images" are drawn on "stacking context" layers on "top of each other". 
+* The "first layer specified" is drawn as if it is "closest to the user".
+* "border"s of the element are then drawn "on top of them"
+* "background-colo"r is drawn beneath them.
+! Always specify a "background-color". If the "images" cannot be loaded, "background-color" will be used as a fallback.
+* To specify multiple background images, supply multiple values, separated by a "comma"
+*/
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+h1 {
+  color: red;
+}
+.background {
+  width: 600px;
+  height: 600px;
+  border: 5px solid black;
+  margin: 50px auto;
+  background-color: red;
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+}
+
+/* 
+----------------------"background-repeat"---------------------------
+* "background-repeat" sets how background images are repeated.
+* As a "default" its coming as "repeat"
+! "background-repeat: repeat-x;" , "background-repeat: repeat-y;" , 
+! "background-repeat: repeat;" , "background-repeat: space;" , 
+! "background-repeat: round;" , "background-repeat: no-repeat;"
+*/
+/* 
+----------------------"background-size"---------------------------
+
+* "background-size" property sets the size of the element's background image.
+* Spaces not covered by a background image are filled with the "background-color" property, and the "background color" will be "visible" behind "background images" that have "transparency".
+? "background-size: auto auto" -> by DEFAULT
+! Keyword values -> "background-size: cover;" , "background-size: contain;"
+! the "width" of the image (height becomes 'auto') -> "background-size: 50% or 3.2em or 120px or auto;"
+! first value: width of the image, second value: height -> "background-size: 50% auto or 3em 120px;"
+! multiple backgrounds -> "background-size: 50%, 25%, 25%;", "background-size: 6px, auto, contain;"
+
+? "contain" -> Scales the image "as large as possible" "within its container" without "cropping(kırpma) or stretching" the image. If the container is "larger than" the "image", this will result in image tiling, unless the "background-repeat" property is set to "no-repeat".
+
+? "cover" -> Scales the image (while "preserving its ratio") to the "smallest possible size" to fill the container (that is: both its height and width completely cover the container), leaving "no empty space". If the "proportions of the background" "differ from the element", the image is cropped(kırpılmış) either vertically or horizontally.
+
+? "auto" Scales the background image in the corresponding direction such that its "intrinsic" (gerçek) proportions are maintained.
+
+!!! Go "MDN background-size" page for more informaiton.
+
+*/
+.background-2 {
+  width: 600px;
+  height: 600px;
+  border: 5px solid black;
+  margin: 50px auto;
+  background-color: red;
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain, 150px, contain;
+  background-repeat: repeat-x;
+}
+
+/* 
+----------------------"background-position"---------------------------
+* "background-position" sets the "initial position" for each background image. 
+* The position is "relative to" the position layer set by "background-origin".
+* The "background-position" property is specified as one or more "position" values, separated by "commas".
+* DEFAULT -> "0% 0%"
+! Keyword -> "background-position: top or bottom or left or right or center;
+! Percentages -> "background-position: 25% 75%;"
+! Lenght -> "background-position: 10px 8em"
+! Mutiple images -> "background-position: 0 0, center;"
+! Edge offset Values -> "background-position: bottom 10px right 20px;"
+
+
+*/
+.background-3 {
+  width: 600px;
+  height: 600px;
+  border: 5px solid black;
+  margin: 50px auto;
+  background-color: red;
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain, 150px, contain;
+  background-repeat: no-repeat;
+  background-position: 0 0, center bottom, 0 0;
+}
+
+/* 
+----------------------"background-origin"---------------------------
+* "background-origin" property sets the background's origin: from the border start, inside the border, or inside the padding.
+* "padding-box" -> DEFAULT VALUE
+! "background-origin: border-box or padding-box or content-box;"
+! For multiple "background-image" case divide properties by comma.
+*/
+.background-4 {
+  width: 600px;
+  height: 600px;
+  border: 50px dotted black;
+  margin: 50px auto;
+  padding: 50px;
+  /* background-color: red; */
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain, 150px, contain;
+  background-repeat: no-repeat;
+  background-position: 0 0, center bottom, 0 0;
+  background-origin: border-box, padding-box, content-box;
+}
+
+/* ----------------------"background-clip"---------------------------
+* "backgorund-clip" property sets whether an element's background extends underneath its border box, padding box, or content box. 
+* "border-box" -> DEFAULT
+! "background-clip: border-box or padding-box or content-box or text;"
+*/
+.background-5 {
+  width: 600px;
+  height: 600px;
+  border: 50px dotted black;
+  margin: 50px auto;
+  padding: 50px;
+  /* background-color: red; */
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain, 150px, contain;
+  background-repeat: no-repeat;
+  background-position: 0 0, center bottom, 0 0;
+  background-origin: padding-box, content-box, padding-box;
+  background-clip: padding-box, padding-box, content-box;
+}
+
+/* 
+--------------Difference Between "background-clip" and "background-origin"------------
+!!! "background-origin" property is used to determine how the "background-position" of a background in a certain box is calculated. The "background-clip" property is used to determine whether the backgrounds "extends" into the "border or not".
+*/
+
+.background-6 {
+  width: 600px;
+  height: 600px;
+  border: 5px solid black;
+  margin: 50px auto;
+  background-color: red;
+  background-image: linear-gradient(
+      rgba(0, 0, 255, 0.5),
+      rgba(255, 255, 0, 0.5)
+    ),
+    url('city.jpg'), url('ayakkabı.jpg');
+  background-size: contain, 150px, contain;
+  background-repeat: no-repeat;
+  background-position: 0 0, center bottom, 0 0;
+}

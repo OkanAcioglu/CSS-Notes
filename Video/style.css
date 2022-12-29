@@ -1,0 +1,46 @@
+/* 
+* "video" HTML element embeds a media player which supports video playback into the document.
+! Attributes:
+
+ ? autoplay -> A Boolean attribute; if specified, the video automatically begins to play back as soon as it can do so without stopping to finish loading the data.
+
+ ? controls -> If this attribute is present, the browser will offer controls to allow the user to control video playback, including volume, seeking, and pause/resume playback.
+
+? loop -> A Boolean attribute; if specified, the browser will automatically seek back to the start upon reaching the end of the video.
+
+? muted -> A Boolean attribute that indicates the default setting of the audio contained in the video. If set, the audio will be initially silenced. Its default value is false, meaning that the audio will be played when the video is played.
+
+? poster -> A URL for an image to be shown while the video is downloading. If this attribute isn't specified, nothing is displayed until the first frame is available, then the first frame is shown as the poster frame.
+
+
+
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 1. Seçenek (OKEYYYY) */
+/* .video-container {
+  width: 100vw;
+  height: 100vh;
+}
+.video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+} */
+
+.video-container {
+  max-width: 100vw;
+  height: 100vh;
+}
+.video {
+  display: block;
+  object-fit: fill;
+  height: 100%;
+  min-width: 100%;
+}

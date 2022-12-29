@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  background: linear-gradient(to top, rgb(166, 162, 162), rgb(207, 210, 205));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  width: 100vw;
+  height: 100vh;
+}
+
+h1 {
+  width: 30%;
+  height: 20%;
+  background-color: rgb(251, 251, 242, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 20px 20px 5px 5px #cfd2cd;
+  color: #847577;
+}
+i {
+  font-size: 50px;
+  color: red;
+  background-color: blue;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+i:hover {
+  transform: scale(2);
+}
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+svg:hover {
+  transform: scale(5);
+}
+
+/* 
+* "iconlar" aslında aynı "font" gibi "web siteleri"nde kullanılmak üzere hazırlanan kütüphanelerden "code" içine eklenebilirler.
+* Bu kütüphanelerden en çok bilineni "fontawesome"dır.
+* "https://fontawesome.com" sitesi ziyaret edilerek "e-mail" adresine yollanacak bir "code" ile kütüphane eklenebilir. 
+* Yukarıdaki işlemin kısayolu ise https://cdnjs.com sitesinde kütüphaneyi direkt kopyalamaktır.
+* Buradan kopyalanan link "HTML" "head" kısmına yapıştırılarak kütüphane eklenmiş olur.
+* Çeşitli CSS özellikleri verilebilir. 
+*/

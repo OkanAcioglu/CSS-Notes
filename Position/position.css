@@ -1,0 +1,86 @@
+/* 
+* "position" propertysi elementlerin döküman içinde nasıl konumlanacaklarını kontrol eder.
+* Elementleri "normal document flow"dan çıkarır. 
+! Default olarak "position: static" özelliği gelen elementler bu özellikten farklı bir "position" özelliği alırsa "normal flow"dan çıktıkları ve üstte oluşan farklı bir boyutta göz önüne alındıkları varsayılır ve diğer elementleri kapatırlar.
+
+
+* "position: static;" element normal akış içinde pozisyonlanmasıdır. Default olarak gelir.
+* "top" , "bottom" , "left" , "right" ve "z-index" propertylerinin bir etkisi bulunmaz.
+
+* "position: relative;" element dökümanın normal akışı içinde ve kendisine göre "top" , "bottom" , "left" , "right" poropertyleri kullanılarak pozisyonlanır.
+* Burada "top" , "bottom" , "left" , "right" biraz ters çalışır. Örnek olarak "top:30px;" dediğimizde içerik sanki yukarıdan "30px"lik kuvvet uygulanıyormuş gibi aşağı kayar. 
+* Pozisyonlanma diğer elemanların pozisyonlarını etkilemez ve pozisyonlanan elementi bıraktığı boşluk "static" pozisyonmuş gibi kalır.
+* Genel olarak "relative" pozisyonlanma ile "top" , "bottom" , "left" , "right" kullanılmaz. Çünkü diğer elementler yer değiştirmezler ve yeni duruma göre tüm elementleri pozisyonlamak zordur.
+! Element "block" olarak tüm satırı kaplamaya devam eder.
+! "margin" özelliği "position" belirlenmesinde hala etkilidir.
+
+
+* "position: absolute;" element döküman akışından çıkarılır ve görmezden gelinir. Diğer elementler sanki görmezden gelinen eleman yokmuş gibi normal akışta yer alır.
+* Element kendine en yakın "POZİSYONLANMIŞ" ancestore, eğer yoksa "initial contain block"a göre konumlanır.Başka bir değişle "absolute" positionu kullanmak için başka bir POZİSYONLANMIŞ parenta ihtiyaç vardır. Bu parentların "position" propertysi "relative" , "absolute" , "fixed" veya "sticky"den herhangi biri olabilir.
+* Pozisyon "top" , "bottom" , "left" , "right" propertylerine göre belirlenir.
+! Element içerik kadar yer kaplar. Verilen "margin" "padding" "border" özellikleri geçerlidir.
+! "margin" özelliği "position" belirlenmesinde hala etkilidir.
+!!! Element "position" özelliği verilmiş elemente göre konumlanır. Konumlanmada başlangıç yeri "parent" elementin "content" başlangıcıdır. Eğer "absolute" konumlanma verilen "child" element üstünde "margin" var ise bu "margin" değeri de göz önüne alınarak "parent" "content area"ya göre konumlanır.
+
+? "z-index" birden fazla "position" eleman olduğu zaman elemanlar üst üste gelmeye başlar.
+? "position" verilmiş elementlerin "z-index" değerleri otomatik olarak "0" atanır ve sıralamaya göre sonra olan en üstte gösterilir ve diğerlerini kapatır.
+? Gerekli durumda en üstte görünmesi istenen veya herhangi bir sıra verilmek istenirse "z-index" değerleri ile oynanarak istenen sıra verilebilir.
+? "z-index" değeri sadece bir tamsayı değeri alır, değer negatif de olabilir. Burada önemli olan büyüklük sıralamasıdır. 
+
+* "position: fixed;" element döküman akışından çıkarılır ve görmezden gelinir. Diğer elementler sanki görmezden gelinen eleman yokmuş gibi normal akışta yer alır.
+* Element entire "Visible Portion of Viewport"e göre "top" , "bottom" , "left" , "right" propertyleri ile belirlenen pozisyonda sabit kalır.
+* Sayfa nereye hareket ettirilirse ettirilsin sabitlenen yerde kalır.
+! Element içerik kadar yer kaplar. Verilen "margin" "padding" "border" özellikleri geçerlidir.
+! "margin" özelliği "position" belirlenmesinde etkililir.
+!!! Element "Visible Portion of Viewport"e göre konumlanır. Konumlanmada başlangıç yeri "Visible Portion of Viewport" başlangıcıdır. Eğer "fixed" konumlanma verilen "child" element üstünde "margin" var ise bu "margin" değeri de göz önüne alınarak "Visible Portion of Viewport"a göre konumlanır.
+
+* "position: sticky;" "relative" ve "fixed" "position" değerlerinin hyrid modelidir.
+* Scroll belli bir yere gelene kadar "relative" olarak , daha sonrasında ise "fixed" olarak çalışır.
+!!!! Kullanışlı uygulamalar için "Web Dev Simplified" Youtube sayfasında "Sticky Position" videosunu izle.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+}
+html {
+  margin: 10px;
+  padding: 20px;
+}
+
+.parent {
+  background-color: blue;
+  margin: 15px;
+  padding: 15px;
+  position: relative;
+  height: 800px;
+  border: 5px solid black;
+}
+.kenar {
+  padding: 15px;
+  border: 5px solid black;
+  margin: 15px;
+}
+
+.one {
+  background-color: red;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 20px;
+  padding: 20px;
+}
+.two {
+  background-color: yellow;
+  position: fixed;
+  left: 100px;
+  bottom: 100px;
+}
+.three {
+  background-color: magenta;
+  position: relative;
+  bottom: 100px;
+  margin-left: 150px;
+  /* top: 150px; */
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="grid.css">
+ <title>Grid</title>
+
+</head>
+
+<body>
+ <h1>"min-content"</h1>
+ <div class="item">Item</div>
+ <div class="item">Item with more text in it.</div>
+ <br><br><br>
+ <h1>"max-content"</h1>
+ <div class="container-1">
+  <div class="item-1">Item</div>
+  <div class="item-1">Item with more text in it which will overflow the fixed width box.</div>
+ </div>
+ <br><br><br>
+ <h1>"fit-content"</h1>
+ <div class="container-2">
+  <div class="item-2">Item</div>
+  <div class="item-2">Item with more text in it.</div>
+  <div class="item-2">Item with more text in it, hopefully we have added enough text so the text will start to wrap.
+  </div>
+ </div>
+ </div>
+ <br><br><br>
+ <h1>"fit-content()"</h1>
+ <div class="container-3">
+  <div class="item-3">Item as wide as the content.</div>
+  <div class="item-3">
+   Item with more text in it. Because the contents of it are
+   wider than the maximum width, it is clamped at 300 pixels.
+  </div>
+  <div class="item-3">Flexible item</div>
+ </div>
+ <br><br><br><br><br>
+ <h1>"minmax"()"</h1>
+ <div class="container-4">
+  <div class="item-4">
+   Item as wide as the content, but at most 300 pixels.
+  </div>
+  <div class="item-4">
+   Item with flexible width but a minimum of 200 pixels.
+  </div>
+  <div class="item-4">
+   Inflexible item of 150 pixels width.
+  </div>
+ </div>
+ <br><br><br><br><br>
+ <h1>grid-column-start------grid-column-end------grid-row-start------grid-row-end</h1>
+ <div class="wrapper">
+  <div class="box1 box">One</div>
+  <div class="box2 box">Two</div>
+  <div class="box3 box">Three</div>
+  <div class="box4 box">Four</div>
+  <div class="box5 box">Five</div>
+ </div>
+ <br><br><br><br><br>
+ <h1>Grid Row Grid Column</h1>
+ <div class="wrapper-1">
+  <div class="box10 box11">One</div>
+  <div class="box20 box11">Two</div>
+  <div class="box30 box11">Three</div>
+  <div class="box40 box11">Four</div>
+  <div class="box50 box11">Five</div>
+ </div>
+ <br><br><br><br><br>
+ <h1>Grid Template Areas</h1>
+ <div class="wrapper-2">
+  <div class="box100 box111">One</div>
+  <div class="box200 box111">Two</div>
+  <div class="box300 box111">Three</div>
+  <div class="box400 box111">Four</div>
+  <div class="box500 box111">Five</div>
+ </div>
+ <br><br><br><br><br>
+ <h1>Justify-Content-Align-Content</h1>
+ <div class="container-5">
+  <div class="cell cell-1">cell 1</div>
+  <div class="cell cell-2">cell 2</div>
+  <div class="cell cell-3">cell 3</div>
+  <div class="cell cell-4">cell 4</div>
+  <div class="cell cell-5">cell 5</div>
+  <div class="cell cell-6">cell 6</div>
+  <div class="cell cell-7">cell 7</div>
+ </div>
+ <br><br><br>
+ <!-- General Grid -->
+ <h1>General Grid</h1>
+ <div class="container">
+  <div class="cell cell-1">cell 1</div>
+  <div class="cell cell-2">cell 2</div>
+  <div class="cell cell-3">cell 3</div>
+  <div class="cell cell-4">cell 4</div>
+  <div class="cell cell-5">cell 5</div>
+  <div class="cell cell-6">cell 6</div>
+  <div class="cell cell-7">cell 7</div>
+ </div>
+ <br><br><br>
+ <h1>Auto-fill + minmax</h1>
+ <div class="container-6">
+  <div class="cell">cell 1</div>
+  <div class="cell">cell 2</div>
+  <div class="cell">cell 3</div>
+  <div class="cell">cell 4</div>
+ </div>
+ <br><br><br>
+ <h1>Auto-fit + minmax</h1>
+ <div class="container-7">
+  <div class="cell">cell 1</div>
+  <div class="cell">cell 2</div>
+  <div class="cell">cell 3</div>
+  <div class="cell">cell 4</div>
+ </div>
+
+
+
+
+
+
+</body>
+
+</html>

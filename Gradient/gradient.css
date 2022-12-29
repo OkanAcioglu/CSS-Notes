@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  display: inline-block;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
+  font-size: 8rem;
+}
+
+.grad {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 20px;
+}
+
+p {
+  font-size: 5rem;
+  text-align: center;
+  width: 400px;
+  height: 400px;
+  border: 5px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+}
+
+/* 
+* "gradient" a special type of "image" that consists of a progressive transition between two or more colors.
+* Because of the "image" data type it can not be used inside like background-color instead can be used in "background" , "background-image".
+* "gradient" has no natural or preferred size, nor a preferred ratio. Its concrete size will match the size of the element to which it applies.
+* Any "color code" can be used such as "rgb" , "hex" ...
+
+! generated within "linear-gradient()" , "radial-gradient()" , "conic-gradient()"
+! generated within "repeating-linear-gradient()" , " repeating-radial-gradient()" , "repeating-conic-gradient()" -> to create repetation.
+
+! Yönelim -> Aşağıdaki 3 satırdan herhangi biri yönelim için kullanılabilir.
+? Örn: "to top" -> yönelim "aşağı"dan başlayıp renk sırasına göre "yukarı" doğru devam eder.
+? Örn: "to top left" -> yönelim "sağ aşağı" köşeden başlar, renk sırasına göre "sol üst" köşeye devam eder.
+? Örn: "145deg" -> "0deg" = "to top" and increase values rotate "clockwise"
+* "to top" , "to bottom" (DEFAULT) , "to left" , "to right"
+* "to top left" , "to top right" , "to bottom left" , "to bottom right"
+* "160deg" , "0deg" = "to top" , "180deg" = "to bottom"
+
+! "background-image: linear-gradient (red, pink ,blue , magenta , green) -> we can add more than 2 color but need at least two color.
+
+! " background-image: linear-gradient (red 10%, pink 90%) -> when state "percentage" as seen on the left, transition for "red" started at "10%" (going solid red until 10%)
+! "px" can be used instead of "%"
+! " background: linear-gradient (red 0%, pink 100%) = " background: linear-gradient (red , pink)
+
+! background: linear-gradient(to right , red 20% , orange 20% 40% , yellow 40% 60% , green 60% 80% , blue 80%); -> multi-position color stops, with adjacent colors having the same color stop value, creating a striped effect.
+
+* "repeating-linear-gradient()" creates an image consisting of repeating linear gradients. 
+*vIt is similar to "linear-gradient()" and takes the same arguments, but it repeats the color stops infinitely in all directions so as to cover its entire container.
+* "background: repeating-linear-gradient(#e66465, #e66465 20px, #9198e5 20px, #9198e5 25px);"
+! The length of the gradient that repeats is the distance between the first and last color stop. If the first color does not have a color-stop-length, the color-stop-length defaults to 0. With each repetition, the positions of the color stops are shifted by a multiple of the length of the basic linear gradient. Thus, the position of each ending color stop coincides with a starting color stop; if the color values are different, this will result in a sharp visual transition. This can be altered with repeating the first color again as the last color.
+
+*/
+
+.a {
+  background: linear-gradient(180deg, blue, red);
+}
+.b {
+  background: linear-gradient(to top left, magenta, cyan);
+}
+.c {
+  background: linear-gradient(red, orange, yellow, green, blue);
+}
+.d {
+  background: linear-gradient(
+    to right,
+    red 20%,
+    orange 20% 40%,
+    yellow 40% 60%,
+    green 60% 80%,
+    blue 80%
+  );
+}
+
+.e {
+  background: linear-gradient(to bottom left, red 5%, yellow 30%, blue 65%);
+}
+
+.f {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    black 20px,
+    black 40px
+  );
+}
+
+.g {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 20px,
+    black 20px 40px
+  );
+}
+.h {
+  background: repeating-linear-gradient(
+      190deg,
+      rgba(255, 0, 0, 0.5) 40px,
+      rgba(255, 153, 0, 0.5) 80px,
+      rgba(255, 255, 0, 0.5) 120px,
+      rgba(0, 255, 0, 0.5) 160px,
+      rgba(0, 0, 255, 0.5) 200px,
+      rgba(75, 0, 130, 0.5) 240px,
+      rgba(238, 130, 238, 0.5) 280px,
+      rgba(255, 0, 0, 0.5) 300px
+    ),
+    repeating-linear-gradient(
+      -190deg,
+      rgba(255, 0, 0, 0.5) 30px,
+      rgba(255, 153, 0, 0.5) 60px,
+      rgba(255, 255, 0, 0.5) 90px,
+      rgba(0, 255, 0, 0.5) 120px,
+      rgba(0, 0, 255, 0.5) 150px,
+      rgba(75, 0, 130, 0.5) 180px,
+      rgba(238, 130, 238, 0.5) 210px,
+      rgba(255, 0, 0, 0.5) 230px
+    ),
+    repeating-linear-gradient(
+      23deg,
+      red 50px,
+      orange 100px,
+      yellow 150px,
+      green 200px,
+      blue 250px,
+      indigo 300px,
+      violet 350px,
+      red 370px
+    );
+}
+
+.j {
+  background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 50px,
+      rgba(255, 127, 0, 0.25) 50px,
+      rgba(255, 127, 0, 0.25) 56px,
+      transparent 56px,
+      transparent 63px,
+      rgba(255, 127, 0, 0.25) 63px,
+      rgba(255, 127, 0, 0.25) 69px,
+      transparent 69px,
+      transparent 116px,
+      rgba(255, 206, 0, 0.25) 116px,
+      rgba(255, 206, 0, 0.25) 166px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 50px,
+      rgba(255, 127, 0, 0.25) 50px,
+      rgba(255, 127, 0, 0.25) 56px,
+      transparent 56px,
+      transparent 63px,
+      rgba(255, 127, 0, 0.25) 63px,
+      rgba(255, 127, 0, 0.25) 69px,
+      transparent 69px,
+      transparent 116px,
+      rgba(255, 206, 0, 0.25) 116px,
+      rgba(255, 206, 0, 0.25) 166px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 5px,
+      rgba(143, 77, 63, 0.25) 5px,
+      rgba(143, 77, 63, 0.25) 10px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 5px,
+      rgba(143, 77, 63, 0.25) 5px,
+      rgba(143, 77, 63, 0.25) 10px
+    );
+
+  background: repeating-linear-gradient(
+      90deg,
+      transparent 0 50px,
+      rgba(255, 127, 0, 0.25) 50px 56px,
+      transparent 56px 63px,
+      rgba(255, 127, 0, 0.25) 63px 69px,
+      transparent 69px 116px,
+      rgba(255, 206, 0, 0.25) 116px 166px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 50px,
+      rgba(255, 127, 0, 0.25) 50px 56px,
+      transparent 56px 63px,
+      rgba(255, 127, 0, 0.25) 63px 69px,
+      transparent 69px 116px,
+      rgba(255, 206, 0, 0.25) 116px 166px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 5px,
+      rgba(143, 77, 63, 0.25) 5px 10px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0 5px,
+      rgba(143, 77, 63, 0.25) 5px 10px
+    );
+}
+
+/* 
+!!!"radial-gradient()" , "conic-gradient()" , "repeating-conic-gradient()" ," repeating-radial-gradient()" are more or less the same features.
+!!! For more information go for "<gradiant> MDN page"
+*/

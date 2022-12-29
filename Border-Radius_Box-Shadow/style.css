@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.border-radius {
+  border: 10px solid red;
+  margin: 100px;
+  text-align: center;
+}
+.header-1 {
+  margin-top: 40px;
+  border: 5px solid black;
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+/* -------------------------------BORDER RADIUS--------------------------------------
+* "border-top-left-radius" property rounds the top-left corner of an element 
+* Rounding can be a "circle" or an "ellipse" or if one of the value is "0" ; no rounding is done and the corner is square.
+! "border-top-left-radius: 3px;"
+! "border-top-left-radius: 0.5em 30%;" -> first value for "horizontal" second value for "vertical"
+
+??? Other three corners react exactly the same way as indicated above.
+*/
+.square1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  border: 5px solid black;
+  background: lime;
+  border-top-left-radius: 100px;
+}
+
+.square2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  border: 5px solid black;
+  background: lime;
+  border-top-left-radius: 50px 100px;
+}
+
+.square3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  border: 5px solid black;
+  background: lime;
+  border-top-left-radius: 50%;
+}
+
+.square4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 300px;
+  height: 500px;
+  border: 5px solid black;
+  background: lime;
+  border-top-left-radius: 50%;
+}
+
+/* 
+* "border-radius" property rounds the corners of an element's outer border edge.
+* The "radius" applies to the "whole background" even if the element has "no border"; the exact "position" of the "clipping" is defined by the "background-clip" property.
+! This property is a shorthand for the following CSS properties:
+? border-top-left-radius
+? border-top-right-radius
+? border-bottom-right-radius
+? border-bottom-left-radius
+
+! "border-radius: 10px;" -> Set for all "4" sides
+! "border-radius: 10px 5%;" -> Top-left and bottom-right = 10px , Top-right and bottom-left = 5%
+! "border-radius: 2px 4px 2px;" -> Top-left = 2px , top-right and bottom-left = 4px , bottom-right = 2px
+
+? border-radius: 10px / 20px; -> When using slash (/) left side of the slash implies the horizontal value for respected corner and right side implies the vertical value for respected corner.
+! border-radius: 10px / 20px -> top-left = top-right = bottom-left = bottom-right = 10px 20px
+! "border-radius: 4px 3px 6px / 2px 4px;" equal to:
+? border-top-left-radius: 4px 2px;
+? border-top-right-radius: 3px 4px;
+? border-bottom-right-radius: 6px 2px;
+? border-bottom-left-radius: 3px 4px;
+
+*/
+.example {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: lime;
+  border: dotted;
+  border-width: 10px 4px;
+  border-radius: 10px 40px;
+}
+.example1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: lime;
+  border: solid 10px;
+  border-radius: 10px 40px 40px 10px;
+}
+.example2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: lime;
+  border: dashed;
+  border-width: 2px 4px;
+  border-radius: 40px;
+}
+/* -------------------------------------BOX SHADOW----------------------------------------
+* "box-shadow" property adds shadow effects around an element's frame. 
+* Can set multiple effects separated by commas. 
+* "box-shadow" is described by "X" and "Y" off-sets relative to the element, "blur" and "spread" radius, and "color".
+! "box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" 
+? offset-x | offset-y | blur-radius | spread-radius | color
+
+* If only two values are given, they are interpreted as "offset-x" and "offset-y" values.
+* If a third value is given, it is interpreted as a "blur-radius".
+* If a fourth value is given, it is interpreted as a "spread-radius".
+
+* "length" values to set the shadow offset:
+* "offset-x" specifies the horizontal distance. Negative values place the shadow to the left of the element. 
+* "offset-y" specifies the vertical distance. Negative values place the shadow above the element.
+* If both values are "0", the shadow is placed behind the element and may generate a blur effect if "blur-radius" and/or "spread-radius" is set.
+
+* "blur-radius" third "length" value. The larger this value, the bigger the blur, so the shadow becomes bigger and lighter. 
+* Negative values are not allowed.
+* If not specified, it will be "0" (the shadow's edge is sharp).
+
+* "spread-radius" fourth "length" value. 
+* "Positive" values will cause the shadow to expand and grow bigger, 
+* "Negative" values will cause the shadow to shrink. 
+* If not specified, it will be 0 (the shadow will be the same size as the element).
+*/
+.shadow1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 150px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: rgb(197, 165, 165);
+  box-shadow: 10px 10px 20px 5px rgba(238, 238, 23, 1);
+}
+.shadow2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 150px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: black;
+  border: solid;
+  border-width: 2px 4px;
+  border-radius: 40px;
+  box-shadow: 10px 10px 20px 5px rgba(238, 238, 23, 1);
+}
+.shadow3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin: 150px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: lime;
+  box-shadow: 3px 3px red, -1em 0 0.4em olive;
+}
+
+.shadow4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 150px auto;
+  padding: 20px;
+  width: 600px;
+  height: 200px;
+  background: white;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}

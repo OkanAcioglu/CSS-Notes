@@ -1,0 +1,100 @@
+/*
+* "text-align" propertysi metin hizalamada kullanılır. 
+* Bir Blok veya tablo hücresi kutusu içindeki satır içi düzeydeki içeriğin yatay hizalanmasını ayarlar.
+* "start, end, left, right, center, justify" değerler alır.
+
+! "font-weight" propertysi fontun ağırlığını yada kalınlığını ayarlar. 
+! Kullanabilir ağırlıklar haylihazırda ayarlanmış olan yazı tipi ailesine bağlıdır. "font-weight" sayıyla belirtildiğinde eğer o yazı tipi ailesinde o ağırlıkta bir değer yoksa ona en yakın değeri alır.
+! "font-weight" propertysi "normal" , "bold" , "lighter" , "bolder" ve sayı olarak 100 ile 900 arasında 100'ün katları şeklinde artacak değerler alır. 400 değeri "normal" , "700" değeri "bold" olarak geçer.
+
+? "text-decoration-line" propertysi dekorasyonun nereye uygulanacığını söyler.
+? "none" , "underline" , "overline" , "line-through" , "none" değerleri alır. Bunlar birden fazla olacak şekilde de kullanılabilir.
+? "text-decoration-color" propertysi eklenen dekorun rengini değiştirir.
+? "currentcolor" , "transparent" , ve herhangi bir "color" yöntemi değerlerini alır.
+? "text-decoration-style" propertysi dekorasyon stilini belirler. 
+? "none" , "solid" , "double" , "dotted" , "dashed" , "wavy" gibi değerler alır.
+* "text-decoration" propertysi "text-decoration-line" , "text-decoration-color" , "text-decoration-style" propertylerinin shorthandi olarak karşımıza çıkar.
+
+! "letter-spacing" propertysi harfler arasındaki mesafeyi ayarlar. 
+! Pozitif değerleri daha da uzaklaştırırken , negatif değerler birbirine daha da yakınlaştırır.
+! "normal" , "3px" , "-3px" gibi değerler alabilir.
+
+* "word-spacing" propertysi kelimeler arası boşluğu düzenler.
+! "keyboard value" (normal)
+! "lenght values" (em , rem , vh , vw , px)
+! "percentage" (80%)
+
+* "line-height" propertysi bir çizgi kutusunun yüksekliğini ayarlar. 
+* Genellikle satırlar arasındaki mesafeyi belirlemek için kullanılır. 
+* "number" , "length" , "percentage", "normal" değerleri alabilir.
+
+! "font-size" propertysi font boyutunu ayarlar.
+! "absolute size" (xx-small , x-small , small , medium (Default) , large , x-large , xx-large , xxx-large)
+! "relative size" (smaller,larger)
+! "lenght values" (em , rem , vh , vw , px)
+! "percentage" (80%)
+
+* "text-transform" propertysi yazının büyük küçük harf durumunu manipüle etmeye yarar. 
+* "capitalize" , "uppercase" , "lowercase" , "none" değerlerini alabilir.
+
+! "font-family" propertysi seçilen öğe için bir veya daha fazla font ailesi adının ve/veya genel aile adının önceliklendirilmiş bir listesini belirtir. 
+! "font-family" içindeki değerler alternatif olduğunu belirtmek için virgülle ayrılır. Browser listedeki ilk uygun hazırda bulunan veya yüklenmiş fontu seçer.
+! Herhangi bir yazı tipinin kullanılabilir olmadığı durumda, bir yazı tipi ailesi listesine her zaman en az bir genel aile adı eklenmelidir. Bu tarayıcının kabul edilebilir bir yedek yazı tipi seçmesini sağlar.
+! "cssfontstack.com" sitesinde hangi fontların ve font ailelerinin hangi işletim sistemi tarafından desteklediği gösteriliyor.
+! Fontun desteklenmemesi içeriğin ekrana gelmeyeceği anlamına gelmez, sadece farklı bir font ile ekrana getirilir. 
+! Font seçimi için en iyi sitelerden birisi "fonts.google.com" olup "Google Fonts" olarak geçmektedir.
+! Font seçimini sayfaya uygulamanın 2 yolu vardır:
+! 1. Yol seçinlen bir veya birden fazla font için "link" yöntemi ile alınan linki HTML içindeki "head" kısmına yapıştırmak.
+! 2. Yol ise seçilen bir veya daha fazla font için "import" yöntemi ile çıkan "style" içindeki linki direkt CSS içine eklemek.
+! Ayrıca her iki seçeneğin altında "font-family" içinde kullanılacak "value" değeri de çıkmaktadır.
+
+? Sistem Font Family kullanılarak VS-Code'un en iyi seçeneği sunduğu olası cihazlar için yazı tiplerinin en uygununu aradığı ve en sona yedek olarak "sans-serif" koyduğu ideal bir familidir.
+? Ayrıca yükleme süresini çok kısaltır.
+? Sistem Font Familisini çağırmak için "-a" yazmak gerekir.
+
+
+
+
+!!! CSS Typography basit kurallarını görmek için Drawio CSS-Part-3 80. Slayta başvur...
+
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Inline+One&family=BhuTuka+Expanded+One&display=swap');
+
+h1 {
+  text-align: center;
+  font-weight: 200;
+  font-size: 100px;
+}
+
+h2 {
+  text-align: right;
+  font-weight: 200;
+  text-decoration: red dotted overline;
+  font-size: xxx-large;
+  text-transform: uppercase;
+  font-family: 'Alumni Sans Inline One', cursive;
+}
+
+h3 {
+  text-align: center;
+  font-weight: 800;
+  text-decoration-line: underline overline line-through;
+  text-decoration-color: red;
+  text-decoration-style: wavy;
+  font-size: 100%;
+  text-transform: lowercase;
+}
+
+h4 {
+  text-align: center;
+  font-weight: 700;
+  text-decoration: underline magenta dashed;
+  letter-spacing: 10px;
+  font-family: 'BhuTuka Expanded One', cursive;
+}
+
+p {
+  line-height: 32px;
+  text-transform: capitalize;
+}

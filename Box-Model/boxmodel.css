@@ -1,0 +1,97 @@
+/* 
+* CSS'te herşey kutulardan oluşur.
+
+* "border" elementi çevreleyen bir kenarlık vermeye yarar.
+* "border-width" , "border-color" , "border-style" olarak geçen üç özelliği tek bir "border" etiketi ile belirtebiliriz.
+! "border" eğer style tanımlanmamışsa görünmez olacaktır. Çünkü style default olarak "none" tanımlıdır.
+
+* "border-width" propertysi "border-top-width" , "border-right-width" , "border-bottom-width" , "border-left-width" dörtlü properysini tek bir etikette göstermeye yarar.
+* "thin" , "medium" , "thick" gibi keyboard valueleri yanısıra px , rem , em gibi değerler de alabilir.
+
+* "border-style" propertysi kenarlığın stilini ayarlar. "border-top-style" , "border-right-style" , "border-bottom-style" , "border-left-style" dörtlü properysini tek bir etikette göstermeye yarar.
+*  none , hidden ,dotted , dashed , solid , double , groove , ridge , inset value değerlerini alabilir.
+
+* "border-color" propertysi kenarlığın rengini ayarlar."border-top-color" , "border-right-color" , "border-bottom-color" , "border-left-color" dörtlü properysini tek bir etikette göstermeye yarar.
+
+* "padding" propertysi "border" ile "content" arasında bir boşluk alanı ekler. "padding-top" , "padding-right" , "padding-bottom" , "padding-left" dörtlü propertysini tek bir etikette göstermeye yarar.
+* "em" , "cm" , "0" , "10%" , "5px" gibi değerler alabilir.
+? "padding" değeri olarak genel olarak "padding: 2x 4x" olacak şekilde ilk değer ikinci değerin yarısı olacak şekilde işlenir.
+
+* "margin" propertysi dört kenar çevresinde border dışından başlamak üzere bir alan oluşturur.
+* "margin-top" , "margin-right" , "margin-bottom" , "margin-left" dörtlü property seti tek bir etikette göstermeye yarar.
+* "1em" , "5%" , auto , "7px" , "-3px" , "0" gibi değerler alabilir.
+? "auto" kullanıldığında browser otomatik olarak uygun bir margin seçer. Belli durumlarda elementi ortalamak için kullanılır. [margin: 0 auto;]
+!!!! "display" özelliği "blok" olan elemanlara verilen "width" ve "height" değerleri sonrası "margin: 0 auto" özelliği çalışacaktır. Çünkü "blok" düzeyinde elemanlarda "satır" o elemana ayrılmıştır. Fakat "inline" ve "inline-block" elemanlarda "margin: 0 auto" özelliği çalışmayacaktır. Çünkü "satır" o elemana ayrılmamıştır ve kullanılacak "margin" değeri olmayacaktır. Bunu sağlamak için ortalanmak istenen elemanın "kapsayıcı" elemanına "text-align: center" verilmelidir. Sonrasında eleman içinde içerik ortalanmak istenirse bu sefer "text-align: center" direk kendine verilerek içerik de ortalanması sağlanabilir.
+
+* "outline" propertysi "border" dışında bulunan bir çizgi ekler.
+* Box Modeldeki diğer birimlere ziyade yer tutmazlar. Bu yüzden belgenin akışını etkilemezler.
+* Aynı "border" elementi olduğu gibi "outline-color" ,  "outline-style" , "outline-width" özellikleri vardır. Bu üç property yaklaşık olarak "border" elementi değerlerinin aynısını alır.
+
+! CSS sayfa başında "*" yardımı ile "margin" ve "padding" değerlerinin "0" yapılması kolaylık sağlar.
+
+! "padding" creates a extra space within an element while "margin" creates a extra space around the element.
+
+! "border-style" , "border-width" , "border-color" , "padding" , "margin" etiketlerine girilen "4" değer sırası ile elementin üst , sağ , aşağı ve sol bölgesinde ilgili kısımları değiştirir.
+! Ayrıca sadece "1" değer girilirse dört bölgeyi de etkiler. "2" değer girilirse sırasıyla dikey ve yatay bölgeleri etkiler. "3" değer girilirse sırasıyla üst , dikey bölgeler ve alt bölgeye uygulanır.
+
+* "border-radius" propertysi border köşelerini kıvırmaya yarar. Tek bir radius değeri ile çember , iki radius ile elliptical elde edilebilir.
+* "border-top-left-radius" , "border-top-right-radius" , "border-bottom-right-radius" , "border-bottom-left-radius"  propertyleri tek bir etiketle göstermeye yarar.
+* "10px" , "6%" , "2em" gibi değerler alabilir.
+* "/" işareti ile eliptik şekiller elde edilebilir. Detaylar için MDN bak.
+
+* "width" propertysi element genişliğini ayarlar. Default olarak "content area"ya göre ayarlanır.
+* Fakat "box-sizing: border-box" ayarlanırsa "border area"ya göre ayarlanır.
+* "300px" , "25em" , "75%" , auto , max-content , min-content gibi değerler alabilir.
+* "auto" kullanıldığında browser uygun genişliği hesaplayıp atar.
+
+* "height" propertysi element yüksekliğini ayarlar. Default olarak "content area"ya göre ayarlanır.
+* Fakat "box-sizing: border-box" ayarlanırsa "border area"ya göre ayarlanır.
+* "300px" , "25em" , "75%" , auto , max-content , min-content gibi değerler alabilir.
+* "auto" kullanıldığında browser uygun yüksekliği hesaplayıp atar.
+
+* "box-sizing" propertysi bir öğenin "width" ve "height" değerlerinin nasıl hesaplanacağını ayarlar.
+* Default olarak bir öğeye "width" ve "height" değeri girildiğinde ekranda oluşan kutunun asıl boyutuna ulaşmak için varsa "padding" ve "border" değerleri bu değere eklenir. Bu durum "box-sizing" propertysinin "content-box" olarak ayarlanmış olmasındandır. Eğer "box-sizing" propertysi "border-box" olarak ayarlanırsa tarayıcı "width" ve "height" sınırları içine "padding" ve "border" değerlerini katacak ve "content-area" değerini buna kısacaktır. Bu durum genellikle öğeleri boyutlandırmayı kolaylaştırır.
+! "border-box" kullanmak boyutlandırması kullanmak öğe boyutları ile uğraşmayı azalttığı , matematiksel işlem yapma zorunluluğu yaratmadığı ve sayfa düzenlemesi sırasında oluşabilecek tuzak ve zorlukları ortadan kaldırır.
+! Diğer taraftan "content-box" kullanmak "position: relative" ve "position: absolute" propertyleri kullanılırken pozisyonlama "content"e göre olmasını sağladığından ve istenen "border" ve "padding" değişikliklerinden bağımsız olmasından dolayı yararlı olabilir.
+
+/* -------------------Max-Min--------------------- */
+/* 
+* "min-width" propertysi elementin minimum genişliğini ayarlar.
+* Atanan "width" değeri, "min-width" değerinin altına düştüğünde; "width" değerinin kullanımını engeller.
+* Elementin "width" değeri; "max-width" ve "width" değerleri, "min-width" değerinin altına düştüğü anda "min-width" olarak ayarlanır.
+! "min-width: 3.5em;" , "min-width: 10%;" , 
+! "min-width: max-content;" , "min-width: min-content;" , "min-width: fit-content(20em);"
+
+* "max-width" propertysi elementin maximum genişliğini ayarlar. 
+* Atanan "width" değeri, "max-width" değerinin üstüne çıkarsa; "width" değerinin kullanımını engeller.
+? "max-width" değeri "width" değerini ezer; "min-width" değeri "max-width" değerini ezer.
+! "max-width: 3.5em;" , "max-width: 10%;" , 
+! "max-width: max-content;" , "max-width: min-content;" , "max-width: fit-content(20em);"
+
+* "min-height" propertysi elementin minimum yüksekliğini ayarlar.
+* Atanan "height" değeri, "min-height" değerinin altına düştüğünde; "height" değerinin kullanımını engeller.
+* Elementin "height" değeri; "max-height" ve "height" değerleri, "min-height" değerinin altına düştüğü anda "min-height" olarak ayarlanır.
+! "min-height: 3.5em;" , "min-height: 10%;" , 
+! "min-height: max-content;" , "min-height: min-content;" , "min-height: fit-content(20em);"
+
+* "max-height" propertysi elementin maximum yüksekliğini ayarlar. 
+* Atanan "height" değeri, "max-height" değerinin üstüne çıkarsa; "height" değerinin kullanımını engeller.
+? "max-height" değeri "height" değerini ezer; "min-height" değeri "max-height" değerini ezer.
+! "max-height: 3.5em;" , "max-height: 10%;" , 
+! "max-height: max-content;" , "max-height: min-content;" , "max-height: fit-content(20em);"
+
+*/
+
+*/ .card {
+  width: 210px;
+  border: 5px grey solid;
+  border-radius: 5px;
+  text-align: center;
+  outline: thick double #32a1ce;
+}
+
+img {
+  width: 200px;
+  border: 5px rgb(236, 183, 191) solid;
+  border-radius: 50%;
+}

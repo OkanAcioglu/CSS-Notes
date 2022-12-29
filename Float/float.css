@@ -1,0 +1,113 @@
+/* 
+* "float" özelliği "text" ve "inline" elementlerin etrafının sarılmasına izin vererek öğeyi kabın sol veya sağ tarafına yerleştirir. Öğe, "absolute positioning" aksine sayfanın normal akışından çıkarılır fakat yine de akışın bir parçası olarak kalır.
+! "float: left / right / none / inline-start / inline-end
+* "float" uygulanan eleman içerdiği kutu içinde herhangi bir kenara denk gelene yada başka bir öğeye denk gelene kadar sola veya sağa kayar.
+
+* "clear" özelliği bir öğenin kendisinden önce gelen "float" elemanların altına taşınmasında görev alır.
+* "float" ve "non-float" elemanlar için kullanılabilir.
+! "clear: left / right / none / both / inline-start / inline-end
+? "Non-floating" elemanlara uygulandığı zaman, eleman ilgili "float" elemanlar alt border sınırlarının altına gelene kadar kayar.
+? "Float" elemanlara uygulandığında, alttaki elemanın "margin"i, ilgili tüm "float" elemanların "marginlerinin" altına taşınır. Bu, sonraki "float" elemanların konumunu etkiler, çünkü sonraki "float" elemanlar, öncekilerden daha yükseğe konumlandırılamaz.
+
+!!! CLEARFIX !!!
+* If an element contains floated elements, it's height collapses to nothing. If you want it to always be able to resize, so that it contains floating elements inside it, you need to self-clear its children. This is called "clearfix", and one way to do it is to add clear to a replaced ::after pseudo-element on it.
+
+?   #container::after {
+?    content: "";
+?    display: block;
+?    clear: both; 
+?    }                              
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 300vh;
+}
+/* 
+* 1. ÖRNEK
+*/
+.container {
+  width: 100%;
+  height: 50vh;
+  border: 10px solid magenta;
+  background-color: grey;
+}
+.box {
+  font-size: 25px;
+}
+
+.box-1 {
+  background-color: yellow;
+  border: 5px solid black;
+  float: left;
+}
+
+.box-2 {
+  background-color: blue;
+  border: 5px solid black;
+  float: right;
+}
+.box-3 {
+  background-color: red;
+  border: 5px solid black;
+  clear: both;
+}
+/* 
+* 2. ÖRNEK
+*/
+.one {
+  background: red;
+}
+
+.two {
+  background: green;
+}
+
+.three {
+  background: blue;
+}
+
+.container-2 div {
+  height: 200px;
+  width: 50%;
+  float: right;
+}
+h1 {
+  clear: both;
+}
+/* 
+* 3. ÖRNEK
+*/
+section {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  width: 100%;
+}
+
+section::after {
+  content: '';
+  display: table;
+  /* display: block; */
+  clear: both;
+}
+
+section div {
+  margin: 5px;
+  width: 50px;
+  height: 150px;
+}
+
+.left {
+  float: left;
+  background: pink;
+}
+
+.right {
+  float: right;
+  background: cyan;
+}

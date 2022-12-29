@@ -1,0 +1,38 @@
+/* 
+* CSS'de 2 tip "length" kullanılır. Bunlar "relative" ve "absolute"dir.
+
+* "Absolute length" değerleri herhangi bir öğeye göre değer almaz ve sabittirler.
+* "cm" , "mm" , "Q" , "in" , "pc" , "pt" , "px" gibi değerleri olmakla birlikte en çok kullanılan değer "px"dir. Diğer değerle çıktı alma sırasında kullanılmaktadır.
+
+* "Relative length" değerlerine herhangi bir değere göre göreceli olarak alırlar.(Parent element fontu veya viewport sizeleri gibi)
+* İyi bir planlama ile tüm sayfa boyutlarını birbirine bağlı hale getirmek için uygundurlar.
+* "em" , "rem" , "%" , "vh" , "vw" ve daha birçok "relative length" vardır.
+
+! "em" --> "font-size" gibi "typographical" propertyler için "PARENT" elementin "font-size" değerini referans alır.
+! Diğer propertyler için (Örnek: width) kendi "font-size" değerini referans alır.
+! Örnek olarak "PARENT" elementi "font-size" değeri "16px" olan elementin "font-size" değeri için 16px = 1em = 100% 'dir.
+
+? "vw" ve "vh" sırası ile "1%" of the "viewport" "width" and "height" referans alır.
+? Örnek: "height: 100vh" would make an element take up the "full height" on screen 
+
+! "rem" --> (ROOT EM) --> "font-size" of "root" elementi referans alır. Yazı tipi için üst ayarları yok sayar. Akıştaki yazı tipi boyutlarından etkilenmez.
+! If the "root font-size" is "20px" ; 1rem is always "20px" , 2rem is always "40px". 
+! "rem" kullanılması tavsiye edilen, en güvenilir ve en az hata çıkaran "lenght" tipidir.
+
+* "percentages" always relative to some other value.
+! For properties "width" , "padding" , "margin" , "left" , "right" (for positioning) are with respect to the "containing block's width"
+! For properties "height" , "top" , "bottom" (for positioning) are with respect to the "containing block's height" 
+! For property "font-size" is respect to the "parent" "font-size"
+! For property "line-height" is respect to the "self-element" "font-size"
+
+*/
+
+html {
+  font-size: 16px;
+}
+.ems li {
+  font-size: 1.3em;
+}
+.rems li {
+  font-size: 1rem;
+}

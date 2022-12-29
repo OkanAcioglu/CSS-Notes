@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 62.5%;
+  margin: 100px;
+}
+
+/* 
+* "Transition enable us to define the transition between two states of element.
+* Basically when the state of element changes though "hover" , "focus" ...
+*/
+/* 
+! "transition-duration" here important to the know that it can take "milisecond" or "second" but it is usefull to us "milisecond" because "JS" only allows us to use "milisecond".
+! Note that "1000ms" = "1s"
+! In general we want our animation pretty fast (between 250ms to 500ms ). "1s" is a really long time. 
+*/
+.box-1 {
+  width: 300px;
+  height: 300px;
+  background-color: #3dccc7;
+  transition-duration: 500ms;
+}
+
+.box-1:hover {
+  background-color: black;
+}
+/* 
+! "transition-property" this is what am I transitioning.
+! "transition-property" default coming with "all"
+! if we write for example "transition-property" as "height" then for "hover" case we write "background" then "background" will not transitioning.
+*/
+.box-2 {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  background-color: #3dccc7;
+  transition-duration: 1000ms;
+  transition-property: background-color, transform;
+  /* transition-property: width;  if we write this one instead of "background-color" , "background-color" will not transition.  */
+}
+
+.box-2:hover {
+  background-color: black;
+  transform: rotate(45deg); /* rotation will not transition */
+  transform: scale(
+    0.5
+  ); /* scale will be transitioned but rotate will not be transformed.*/
+  width: 500px; /* width will not be transitioned */
+}
+
+/* 
+!!! It is important to note that if we did not indicate "transition-property" then as we know it will taken as all and all transitionable properties will be transitioned.
+! But, although it is easy and clean way to do that it is not reccomended because transitions are CPU intensive. So for " transition-property" only write the property that we want to be transitioned.
+*/
+
+/* 
+! "transition-timing-function" function that determine how the animation will be change in selected time
+! "linear"  , "ease" , "ease-in" , "ease-out" , "ease-in-out" are some of the predetermined value.
+! Default value is "ease"
+! "Dev-tools" are really impresive and offer more versatile options. Just go to the "Dev-Tools" and find the symbol in front of the "transition-timing-function"
+*/
+.box-3 {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  background-color: #3dccc7;
+  transition-duration: 1000ms;
+  transition-property: background-color, transform;
+  /* transition-property: width;  if we write this one instead of "background-color" , "background-color" will not transition.  */
+  /* transition-timing-function: linear; */
+  transition-timing-function: cubic-bezier(0.38, 1.86, 0, 1.37);
+}
+
+.box-3:hover {
+  background-color: black;
+  transform: rotate(45deg); /* rotation will not transition */
+  width: 500px; /* width will not be transitioned */
+}
+
+/* 
+! "transition-delay" how long the is it take the transition begin
+! "linear"  , "ease" , "ease-in" , "ease-out" , "ease-in-out" are some of the predetermined value.
+! Default value is "ease"
+! "Dev-tools" are really impresive and offer more versatile options. Just go to the "Dev-Tools" and find the symbol in front of the "transition-timing-function"
+*/
+.box-4 {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  background-color: #3dccc7;
+  transition-duration: 1000ms;
+  transition-property: background-color, transform;
+
+  /* transition-property: width;  if we write this one instead of "background-color" , "background-color" will not transition.  */
+  /* transition-timing-function: linear; */
+  transition-timing-function: cubic-bezier(0.38, 1.86, 0, 1.37);
+  transition-delay: 2000ms;
+}
+
+.box-4:hover {
+  background-color: black;
+  transform: rotate(45deg); /* rotation will not transition */
+  width: 500px; /* width will not be transitioned */
+}
+/* 
+! "transition" can be used as a shortcut for all these properties.
+! Note that "first timing input" is "always duration" and "second one" is "delay"
+! Note that "transition-property" should be written before the "transition-timing-function"
+! We can write more than one "transition" only divide them with comma (,)
+! If you write more than 1 transition and if you want to occur them 1 after you should do a little mathematical calculation on "transition-duration" and "transition-delay" properties.
+*/
+
+.box-5 {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  background-color: #3dccc7;
+  /* transition-duration: 1000ms; */
+  /* transition-property: background-color, transform; */
+  /* transition-timing-function: linear; */
+  /* transition-delay: 2000ms; */
+  transition: 500ms background-color linear 1s, 1000ms transform ease-in 1500ms;
+}
+
+.box-5:hover {
+  background-color: black;
+  transform: rotate(45deg);
+}

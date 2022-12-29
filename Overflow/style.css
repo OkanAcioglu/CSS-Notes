@@ -1,0 +1,46 @@
+/* 
+* "overflow" sets the desired behavior for an element's overflow 
+* When an element's content is too big to fit in its "block formatting context" in both directions.
+* "visible" -> DEFAULT
+! "overflow: visible;" , "overflow: hidden;" , "overflow: scroll;"
+
+? Look "MDN Overflow" for more information
+*/
+.container {
+  min-height: 100vh;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  text-align: center;
+}
+.text1 {
+  border: 5px dashed black;
+  width: 40vw;
+  height: 40vh;
+  font-size: 2rem;
+  margin: 200px auto;
+  overflow: visible;
+}
+.text2 {
+  border: 5px dashed black;
+  width: 40vw;
+  height: 40vh;
+  font-size: 2rem;
+  margin: 200px auto;
+  overflow: hidden;
+}
+.text3 {
+  border: 5px dashed black;
+  width: 40vw;
+  height: 40vh;
+  font-size: 2rem;
+  margin: 200px auto;
+  overflow: scroll;
+}
+.text4 {
+  border: 5px dashed black;
+  width: 40vw;
+  height: 40vh;
+  font-size: 2rem;
+  margin: 200px auto;
+  overflow: scroll;
+}
